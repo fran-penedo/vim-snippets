@@ -1,4 +1,4 @@
-priority -50
+priority 50
 
 ###########################################################################
 #                            TEXTMATE SNIPPETS                            #
@@ -714,6 +714,45 @@ snippet pmdoc "pocoo style module doc string" b
 	:license: ${3:LICENSE_NAME}, see LICENSE for more details.
 """
 $0
+endsnippet
+
+##########
+# Custom #
+##########
+
+snippet module "Module template" b
+import logging
+
+LOGGER = logging.getLogger(__name__)
+endsnippet
+
+snippet testmodule "Test module template" b
+import logging
+import unittest
+import os
+
+import numpy as np  # type: ignore
+import numpy.testing as npt  # type: ignore
+
+from ${1:package} import ${2:module}
+
+LOGGER = logging.getLogger(__name__)
+TEST_DIR = os.path.dirname(os.path.realpath(__file__))
+FOCUSED = os.environ.get("FOCUSED", False)
+
+
+class Test${2/\w+\s*/\u$0/}(unittest.TestCase):
+
+	`!p snip.rv = triple_quotes(snip)`${3:Test case docstring.}`!p snip.rv = triple_quotes(snip)`
+
+	def setUp(self):
+		${4:pass}
+
+	def tearDown(self):
+		${5:pass}
+
+	def test_${6:name}(self):
+		${7:${VISUAL:pass}}
 endsnippet
 
 # vim:ft=snippets:
