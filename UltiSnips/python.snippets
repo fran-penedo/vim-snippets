@@ -723,7 +723,7 @@ endsnippet
 snippet module "Module template" b
 import logging
 
-LOGGER = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 endsnippet
 
 snippet testmodule "Test module template" b
@@ -736,7 +736,7 @@ import numpy.testing as npt  # type: ignore
 
 from ${1:package} import ${2:module}
 
-LOGGER = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 TEST_DIR = os.path.dirname(os.path.realpath(__file__))
 FOCUSED = os.environ.get("FOCUSED", False)
 
